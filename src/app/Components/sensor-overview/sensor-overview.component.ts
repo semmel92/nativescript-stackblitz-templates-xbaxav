@@ -1,19 +1,22 @@
+// sensor-overview.component.ts Inhalt:
+
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../Services/backend.service';
+import { Sensor } from '~/app/Models/sensor.model';
 
 @Component({
   selector: 'ns-sensor-overview',
-  templateUrl: './sensor-overview.html',
+  templateUrl: './sensor-overview.component.html',
 })
 export class SensorOverviewComponent implements OnInit {
-  sensors: any[] = [];  
+  sensors: Sensor[] = [];
   showSensorList = false;
 
   constructor(private backendService: BackendService) {}
 
   ngOnInit(): void {
-    this.backendService.getSensors().subscribe(data => {
-      this.sensors = data;  
+    this.backendService.getSensors().subscribe(response => {
+      this.sensors = response.content; 
     });
   }
 
@@ -21,3 +24,4 @@ export class SensorOverviewComponent implements OnInit {
     this.showSensorList = true; 
   }
 }
+//---------------------------------------------------

@@ -1,3 +1,5 @@
+<!-- sensor-overview.component.html Inhalt: -->
+
 <ActionBar title="Wähle Sensor"></ActionBar>
 <StackLayout>
   <Label *ngIf="!showSensorList && sensors.length > 0" [text]="sensors[0].name" (tap)="onSensorTouch()"></Label>
@@ -8,3 +10,4 @@
     </StackLayout>
   </ScrollView>
 </StackLayout>
+<!------------------------------------------------------->

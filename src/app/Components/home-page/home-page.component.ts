@@ -1,3 +1,5 @@
+//home-page.component.ts Inhalt:
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,3 +16,4 @@ export class HomePageComponent {
     this.router.navigate(['/sensors']);
   }
 }
+//---------------------------------------------------

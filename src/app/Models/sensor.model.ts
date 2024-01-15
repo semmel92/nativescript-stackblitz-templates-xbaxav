@@ -1,3 +1,5 @@
+//sensor.model.ts Inhalt:
+
 export interface Sensor {
     sensorId: number;
     name: string;
@@ -11,4 +13,4 @@ export interface Sensor {
     INDOOR,
     WATER
   }
-  
+  //---------------------------------------------------

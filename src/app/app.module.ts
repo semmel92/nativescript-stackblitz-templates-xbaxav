@@ -1,3 +1,5 @@
+//app.module.ts Inhalt:
+
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
 import { NativeScriptModule } from '@nativescript/angular'
 import { HttpClientModule } from '@angular/common/http'
@@ -16,3 +18,4 @@ import { BackendService } from './Services/backend.service';
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {}
+//---------------------------------------------------

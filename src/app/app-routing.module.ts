@@ -1,3 +1,5 @@
+//app-routing.module.ts Inhalt:
+
 import { NgModule } from '@angular/core';
 import { NativeScriptRouterModule } from '@nativescript/angular';
 import { Routes } from '@angular/router';
@@ -15,3 +17,4 @@ const routes: Routes = [
   exports: [NativeScriptRouterModule]
 })
 export class AppRoutingModule {}
+//---------------------------------------------------
