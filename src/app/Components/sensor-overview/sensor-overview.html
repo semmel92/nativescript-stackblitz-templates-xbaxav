@@ -1,6 +1,6 @@
 <ActionBar title="Wähle Sensor"></ActionBar>
 <StackLayout>
-  <Label *ngIf="!showSensorList" [text]="sensors[0]?.name" (tap)="onSensorTouch()"></Label>
+  <Label *ngIf="!showSensorList && sensors.length > 0" [text]="sensors[0].name" (tap)="onSensorTouch()"></Label>
 
   <ScrollView *ngIf="showSensorList">
     <StackLayout>
