@@ -15,10 +15,18 @@ export class SensorOverviewComponent implements OnInit {
   constructor(private backendService: BackendService) {}
 
   ngOnInit(): void {
-    this.backendService.getSensors().subscribe(response => {
-      this.sensors = response.content; 
-    });
+    this.backendService.getSensors().subscribe(
+      response => {
+        console.log('Empfangene Antwort:', response);
+        this.sensors = response.content;
+        console.log('Sensoren:', this.sensors);
+      },
+      error => {
+        console.error('Fehler beim Abrufen der Sensoren:', error);
+      }
+    );
   }
+  
 
   onSensorTouch() {
     this.showSensorList = true; 

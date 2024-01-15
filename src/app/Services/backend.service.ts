@@ -12,7 +12,7 @@ import { PaginatedResponse } from '../Models/paginated-response.model';
 })
 
 export class BackendService {
-  private apiUrl = 'http://localhost:8080/rest-api';
+  private apiUrl = 'http://192.168.178.57:8080/rest-api';
 
   constructor(private http: HttpClient) { }
 
