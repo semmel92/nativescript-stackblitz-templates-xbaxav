@@ -20,7 +20,6 @@ export class ItemDetailComponent implements OnInit {
     const id = +this.route.snapshot.params.id;
     this.item = this.itemService.getItem(id);
 
-    // log the item to the console
     console.log(this.item);
   }
 }

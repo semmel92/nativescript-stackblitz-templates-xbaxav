@@ -13,8 +13,8 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
-  getSensors(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl + '/sensors');
+  getSensors(): Observable<Sensor[]> {
+    return this.http.get<Sensor[]>(this.apiUrl + '/sensors');
   }
 
 }
