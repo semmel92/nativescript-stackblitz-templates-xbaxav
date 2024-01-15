@@ -3,7 +3,7 @@ import { NativeScriptRouterModule } from '@nativescript/angular';
 import { Routes } from '@angular/router';
 
 import { HomePageComponent } from './Components/home-page/home-page.component';
-import { SensorOverviewComponent } from './Components/sensor-overview/sensor-overview';
+import { SensorOverviewComponent } from './Components/sensor-overview/sensor-overview.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
