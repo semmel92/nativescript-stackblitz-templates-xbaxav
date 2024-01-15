@@ -3,7 +3,7 @@ import { BackendService } from '../../Services/backend.service';
 
 @Component({
   selector: 'ns-sensor-overview',
-  templateUrl: './sensor-overview.component.html',
+  templateUrl: './sensor-overview.html',
 })
 export class SensorOverviewComponent implements OnInit {
   sensors: any[] = [];  
