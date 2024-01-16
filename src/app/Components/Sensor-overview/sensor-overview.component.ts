@@ -11,25 +11,25 @@ import { Sensor } from '~/app/Models/sensor.model';
 export class SensorOverviewComponent implements OnInit {
   sensors: Sensor[] = [];
   showSensorList = false;
+  isLoading = true;
 
   constructor(private backendService: BackendService) {}
 
-  ngOnInit(): void {
-    this.backendService.getSensors().subscribe(
-      response => {
-        console.log('Empfangene Antwort:', response);
-        this.sensors = response.content;
-        console.log('Sensoren:', this.sensors);
-      },
-      error => {
-        console.error('Fehler beim Abrufen der Sensoren:', error);
-      }
-    );
-  }
-  
+    ngOnInit(): void {
+        this.backendService.getSensors(0, 10).subscribe(
+            response => {
+                this.sensors = response.content;
+                this.isLoading = false;
+            },
+            error => {
+                console.error('Fehler beim Abrufen der Sensoren:', error);
+                this.isLoading = false;
+            }
+        );
+    }
 
   onSensorTouch() {
-    this.showSensorList = true; 
+    this.showSensorList = true;
   }
 }
 //---------------------------------------------------

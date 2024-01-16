@@ -1,0 +1,18 @@
+<!-- sensor-overview.component.html Inhalt: -->
+
+<ActionBar title="Wähle Sensor"></ActionBar>
+<StackLayout>
+    <ActivityIndicator *ngIf="isLoading" busy="true"></ActivityIndicator>
+
+    <Label *ngIf="!showSensorList && sensors.length > 0 && !isLoading"
+           text="{{ sensors[0]?.name }}"
+           (tap)="onSensorTouch()"></Label>
+
+    <ScrollView *ngIf="showSensorList && !isLoading">
+        <StackLayout>
+            <Label *ngFor="let sensor of sensors"
+                   text="{{ sensor?.name + ' - ' + (sensor?.location ? sensor.location : 'Keine Location') + ' - ' + (sensor?.active ? 'Aktiv' : 'Inaktiv') + ' - ' + (sensor?.type ? sensor.type : 'Kein Typ') }}"></Label>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>
+<!------------------------------------------------------->

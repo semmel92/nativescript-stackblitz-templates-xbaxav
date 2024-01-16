@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { NativeScriptRouterModule } from '@nativescript/angular';
 import { Routes } from '@angular/router';
 
-import { HomePageComponent } from './Components/home-page/home-page.component';
-import { SensorOverviewComponent } from './Components/sensor-overview/sensor-overview.component';
+import { HomePageComponent } from '~/app/Components/Home-page/home-page.component';
+import { SensorOverviewComponent } from '~/app/Components/Sensor-overview/sensor-overview.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },

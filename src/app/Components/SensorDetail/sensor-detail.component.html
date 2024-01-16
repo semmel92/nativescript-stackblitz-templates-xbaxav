@@ -1,0 +1,16 @@
+<!-- sensor-detail.component.html Inhalt: -->
+
+<StackLayout *ngIf="sensor">
+    <Label text="Sensor Details" class="h1"></Label>
+    <Label [text]="'Name: ' + sensor.name"></Label>
+    <Label [text]="'Location: ' + sensor.location"></Label>
+    <!-- Weitere Sensor-Details hier anzeigen -->
+
+    <Label text="Letzte 10 Messwerte" class="h2"></Label>
+    <StackLayout *ngFor="let measurement of lastTenMeasurements">
+        <Label [text]="measurement.timestamp | date: 'medium'"></Label>
+        <Label [text]="'Temperatur: ' + measurement.temperature + '°C'"></Label>
+        <Label [text]="'Luftfeuchtigkeit: ' + measurement.humidity + '%'"></Label>
+    </StackLayout>
+</StackLayout>
+<!------------------------------------------------------->
