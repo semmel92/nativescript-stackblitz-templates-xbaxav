@@ -3,17 +3,18 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../Services/backend.service';
 import { Sensor } from '~/app/Models/sensor.model';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'ns-sensor-overview',
-  templateUrl: './sensor-overview.component.html',
+    selector: 'ns-sensor-overview',
+    templateUrl: './sensor-overview.component.html',
 })
 export class SensorOverviewComponent implements OnInit {
-  sensors: Sensor[] = [];
-  showSensorList = false;
-  isLoading = true;
+    sensors: Sensor[] = [];
+    showSensorList = false;
+    isLoading = true;
 
-  constructor(private backendService: BackendService) {}
+    constructor(private backendService: BackendService, private router: Router) {} // Router injizieren
 
     ngOnInit(): void {
         this.backendService.getSensors(0, 10).subscribe(
@@ -28,8 +29,11 @@ export class SensorOverviewComponent implements OnInit {
         );
     }
 
-  onSensorTouch() {
-    this.showSensorList = true;
-  }
+    onSensorTouch() {
+        this.showSensorList = true;
+    }
+    navigateToSensorDetails(sensorId: number) {
+        this.router.navigate(['/sensor-detail', sensorId]);
+    }
 }
 //---------------------------------------------------
