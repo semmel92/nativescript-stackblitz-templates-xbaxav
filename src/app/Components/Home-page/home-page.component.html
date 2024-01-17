@@ -10,10 +10,9 @@
                 <Label [text]="'Typ: ' + sensor.type" class="label"></Label>
                 <Label [text]="'Standort: ' + sensor.location" class="label"></Label>
                 <Label [text]="'Aktiv: ' + (sensor.active ? 'Ja' : 'Nein')" class="label"></Label>
-                <!-- Anzeigen der letzten Messwerte -->
                 <ng-container *ngFor="let measurement of getLatestMeasurements(sensor.measurements)">
-                    <Label *ngIf="measurement" [text]="'Letzte Temperatur: ' + measurement.temperature + '°C'" class="label"></Label>
-                    <Label *ngIf="measurement" [text]="'Letzte Luftfeuchtigkeit: ' + measurement.humidity + '%'" class="label"></Label>
+                    <Label [text]="'Letzte Temperatur: ' + (measurement?.temperature ?? 'N/A') + '°C'" class="label"></Label>
+                    <Label [text]="'Letzte Luftfeuchtigkeit: ' + (measurement?.humidity ?? 'N/A') + '%'" class="label"></Label>
                 </ng-container>
             </StackLayout>
         </ng-container>

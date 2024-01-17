@@ -1,15 +1,7 @@
 <!-- sensor-chart.component.html Inhalt: -->
-
 <RadCartesianChart>
-    <DateTimeContinuousAxis tkCartesianHorizontalAxis
-                            dateFormat="dd/MM"
-                            verticalLocation="Bottom">
-    </DateTimeContinuousAxis>
+    <DateTimeContinuousAxis tkCartesianHorizontalAxis dateFormat="dd/MM" verticalLocation="Bottom"></DateTimeContinuousAxis>
     <LinearAxis tkCartesianVerticalAxis></LinearAxis>
-    <LineSeries tkCartesianSeries
-                [items]="sensorData"
-                categoryProperty="timestamp"
-                valueProperty="temperature">
-    </LineSeries>
+    <LineSeries tkCartesianSeries [items]="chartDataSource" categoryProperty="category" valueProperty="value"></LineSeries>
 </RadCartesianChart>
 <!------------------------------------------------------->

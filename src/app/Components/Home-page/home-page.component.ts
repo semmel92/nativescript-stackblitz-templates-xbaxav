@@ -49,13 +49,14 @@ export class HomePageComponent implements OnInit {
         this.sensors.forEach(sensor => {
             this.backendService.getMeasurementsFromSensor(sensor.sensorId).subscribe(measurements => {
                 if (measurements && measurements.length > 0) {
+                    // Konvertierung der timestamp-Felder von String zu Date
                     const measurementsWithTimestamps = measurements.map(measurement => ({
                         ...measurement,
                         timestamp: new Date(measurement.timestamp)
                     }));
-
-                    const latestMeasurements = measurementsWithTimestamps.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(0, 10);
-
+                    const latestMeasurements = measurementsWithTimestamps
+                        .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+                        .slice(0, 10);
                     sensor.measurements = latestMeasurements;
                 }
             }, error => {
@@ -63,6 +64,7 @@ export class HomePageComponent implements OnInit {
             });
         });
     }
+
 
 
     showSensors(): void {
