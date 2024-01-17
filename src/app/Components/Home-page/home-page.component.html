@@ -4,4 +4,15 @@
 <StackLayout>
   <Button text="Zeige alle Sensoren" (tap)="showSensors()"></Button>
 </StackLayout>
+<ScrollView orientation="horizontal">
+    <StackLayout orientation="horizontal">
+        <ng-container *ngFor="let measurement of latestMeasurements">
+            <StackLayout class="card">
+                <Label [text]="measurement.sensorName" class="card-title"></Label>
+                <Label [text]="'Temperatur: ' + measurement.temperature + '°C'"></Label>
+                <Label [text]="'Luftfeuchtigkeit: ' + measurement.humidity + '%'"></Label>
+            </StackLayout>
+        </ng-container>
+    </StackLayout>
+</ScrollView>
 <!------------------------------------------------------->

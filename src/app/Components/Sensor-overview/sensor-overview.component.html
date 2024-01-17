@@ -1,18 +1,15 @@
 <!-- sensor-overview.component.html Inhalt: -->
 
 <ActionBar title="Wähle Sensor"></ActionBar>
-<StackLayout>
-    <ActivityIndicator *ngIf="isLoading" busy="true"></ActivityIndicator>
-
-    <Label *ngIf="!showSensorList && sensors.length > 0 && !isLoading"
-           text="{{ sensors[0]?.name }}"
-           (tap)="onSensorTouch()"></Label>
-
-    <ScrollView *ngIf="showSensorList && !isLoading">
-        <StackLayout>
-            <Label *ngFor="let sensor of sensors"
-                   text="{{ sensor?.name + ' - ' + (sensor?.location ? sensor.location : 'Keine Location') + ' - ' + (sensor?.active ? 'Aktiv' : 'Inaktiv') + ' - ' + (sensor?.type ? sensor.type : 'Kein Typ') }}"></Label>
+<ActionBar title="Sensorübersicht"></ActionBar>
+<ListView [items]="sensors" class="list-group">
+    <ng-template let-sensor="item">
+        <StackLayout class="list-group-item" (tap)="navigateToSensorDetails(sensor.sensorId)">
+            <Label [text]="sensor.name" class="list-group-item-title"></Label>
+            <Label [text]="'Standort: ' + sensor.location" class="list-group-item-subtitle"></Label>
+            <Label [text]="'Typ: ' + sensor.type" class="list-group-item-subtitle"></Label>
+            <Label [text]="'Aktiv: ' + (sensor.active ? 'Ja' : 'Nein')" class="list-group-item-subtitle"></Label>
         </StackLayout>
-    </ScrollView>
-</StackLayout>
+    </ng-template>
+</ListView>
 <!------------------------------------------------------->

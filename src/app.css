@@ -8,6 +8,24 @@
 @tailwind utilities;
 
 Button.-primary {
-  font-size: 18;
+    font-size: 18;
+}
+
+.section-header {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.card {
+    margin: 5px;
+    padding: 10px;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.card-title {
+    font-weight: bold;
 }
 /*---------------------------------------------------*/

@@ -14,7 +14,9 @@ export class BackendService {
     private apiUrl = 'http://192.168.178.114:8080/rest-api';
 
     constructor(private http: HttpClient) {}
-
+    getLatestMeasurements(): Observable<Measurement[]> {
+        return this.http.get<Measurement[]>(`${this.apiUrl}/sensors/latestMeasurements`);
+    }
     getSensors(page: number, pageSize: number): Observable<PaginatedResponse<Sensor>> {
         return this.http.get<PaginatedResponse<Sensor>>(`${this.apiUrl}/sensors?page=${page}&size=${pageSize}`);
     }
