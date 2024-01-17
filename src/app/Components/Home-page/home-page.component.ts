@@ -20,6 +20,16 @@ export class HomePageComponent implements OnInit {
     ngOnInit(): void {
         this.loadSensorsAndMeasurements(0);
     }
+    navigateToSensorDetails(sensorId: number): void {
+        this.router.navigate(['/sensor-detail', sensorId]);
+    }
+    getLatestMeasurements(measurements: Measurement[]): Measurement[] {
+        if (measurements && measurements.length) {
+            return measurements.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(0, 1);
+        }
+        return [];
+    }
+
 
     private loadSensorsAndMeasurements(page: number) {
         this.backendService.getSensors(page, 10).subscribe(response => {
@@ -38,16 +48,22 @@ export class HomePageComponent implements OnInit {
     private loadMeasurementsForAllSensors() {
         this.sensors.forEach(sensor => {
             this.backendService.getMeasurementsFromSensor(sensor.sensorId).subscribe(measurements => {
-                measurements.forEach(measurement => {
-                    measurement.timestamp = new Date(measurement.timestamp);
-                });
+                if (measurements && measurements.length > 0) {
+                    const measurementsWithTimestamps = measurements.map(measurement => ({
+                        ...measurement,
+                        timestamp: new Date(measurement.timestamp)
+                    }));
 
-                this.latestMeasurements.push(...measurements);
-                this.latestMeasurements.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
-                this.latestMeasurements = this.latestMeasurements.slice(0, 10);
+                    const latestMeasurements = measurementsWithTimestamps.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(0, 10);
+
+                    sensor.measurements = latestMeasurements;
+                }
+            }, error => {
+                console.error(`Fehler beim Abrufen der Messungen für Sensor ${sensor.sensorId}:`, error);
             });
         });
     }
+
 
     showSensors(): void {
         this.router.navigate(['/sensors']);

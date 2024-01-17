@@ -1,38 +1,22 @@
 <!-- sensor-measurement.component.html Inhalt: -->
 
 <ActionBar title="Temperaturmessungen"></ActionBar>
+<ScrollView>
+    <StackLayout>
+        <Label text="Letzte 24 Stunden" class="h2"></Label>
+        <RadCartesianChart>
+            <LineSeries tkCartesianSeries [items]="measurements24Hours" categoryProperty="timestamp" valueProperty="temperature"></LineSeries>
+        </RadCartesianChart>
 
-<StackLayout>
-    <Label text="Letzte 24 Stunden" class="h2"></Label>
-    <RadCartesianChart>
-        <LineSeries tkCartesianSeries [items]="measurements24Hours" categoryProperty="timestamp"
-                    valueProperty="temperature"></LineSeries>
-    </RadCartesianChart>
-    <Label text="Letzte 7 Tage" class="h2"></Label>
-    <RadCartesianChart>
-        <LineSeries tkCartesianSeries [items]="measurements7Days" categoryProperty="timestamp"
-                    valueProperty="temperature"></LineSeries>
-    </RadCartesianChart>
-    <Label text="Letzte 30 Tage" class="h2"></Label>
-    <RadCartesianChart>
-        <LineSeries tkCartesianSeries [items]="measurements30Days" categoryProperty="timestamp"
-                    valueProperty="temperature"></LineSeries>
-    </RadCartesianChart>
-</StackLayout>
-<StackLayout>
-    <Label text="Letzte 24 Stunden" class="h2"></Label>
-    <RadCartesianChart height="200">
-        <LineSeries [items]="measurements24Hours" categoryProperty="timestamp" valueProperty="temperature"></LineSeries>
-    </RadCartesianChart>
+        <Label text="Letzte 7 Tage" class="h2"></Label>
+        <RadCartesianChart>
+            <LineSeries tkCartesianSeries [items]="measurements7Days" categoryProperty="timestamp" valueProperty="temperature"></LineSeries>
+        </RadCartesianChart>
 
-    <Label text="Letzte 7 Tage" class="h2"></Label>
-    <RadCartesianChart height="200">
-        <LineSeries [items]="measurements7Days" categoryProperty="timestamp" valueProperty="temperature"></LineSeries>
-    </RadCartesianChart>
-
-    <Label text="Letzte 30 Tage" class="h2"></Label>
-    <RadCartesianChart height="200">
-        <LineSeries [items]="measurements30Days" categoryProperty="timestamp" valueProperty="temperature"></LineSeries>
-    </RadCartesianChart>
-</StackLayout>
+        <Label text="Letzte 30 Tage" class="h2"></Label>
+        <RadCartesianChart>
+            <LineSeries tkCartesianSeries [items]="measurements30Days" categoryProperty="timestamp" valueProperty="temperature"></LineSeries>
+        </RadCartesianChart>
+    </StackLayout>
+</ScrollView>
 <!------------------------------------------------------->

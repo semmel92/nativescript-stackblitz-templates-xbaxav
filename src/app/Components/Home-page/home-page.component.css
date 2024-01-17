@@ -1,5 +1,42 @@
 /* home-page.component.css Inhalt: */
 
-/*------------No content so far---------------*/
+.btn {
+    padding: 10px;
+    margin: 5px;
+    background-color: #30bced;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
 
+.btn-primary {
+    background-color: #5cb85c;
+}
+
+.card {
+    margin: 2px;
+    padding: 10px;
+    border-width: 1px;
+    border-color: #dddddd;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.section-header {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 0;
+}
 /*---------------------------------------------------*/

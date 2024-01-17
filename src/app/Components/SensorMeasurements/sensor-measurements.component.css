@@ -1,0 +1,12 @@
+/* sensor-measurements.component.css Inhalt: */
+
+.h2 {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.RadCartesianChart {
+    height: 200px;
+}
+/*---------------------------------------------------*/

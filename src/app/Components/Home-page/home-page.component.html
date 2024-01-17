@@ -1,18 +1,22 @@
 <!-- home-page.component.html Inhalt: -->
 
 <ActionBar title="Sensor Dashboard"></ActionBar>
-<StackLayout>
-  <Button text="Zeige alle Sensoren" (tap)="showSensors()"></Button>
-</StackLayout>
-<ScrollView orientation="horizontal">
-    <StackLayout orientation="horizontal">
-        <ng-container *ngFor="let measurement of latestMeasurements">
-            <StackLayout class="card">
-                <Label [text]="measurement.sensorName" class="card-title"></Label>
-                <Label [text]="'Temperatur: ' + measurement.temperature + '°C'"></Label>
-                <Label [text]="'Luftfeuchtigkeit: ' + measurement.humidity + '%'"></Label>
+<ScrollView>
+    <FlexboxLayout flexDirection="column" alignItems="stretch">
+        <Button text="Zeige alle Sensoren" class="btn btn-primary" (tap)="showSensors()"></Button>
+        <ng-container *ngFor="let sensor of sensors">
+            <StackLayout class="card" (tap)="navigateToSensorDetails(sensor.sensorId)">
+                <Label [text]="sensor.name" class="card-title"></Label>
+                <Label [text]="'Typ: ' + sensor.type" class="label"></Label>
+                <Label [text]="'Standort: ' + sensor.location" class="label"></Label>
+                <Label [text]="'Aktiv: ' + (sensor.active ? 'Ja' : 'Nein')" class="label"></Label>
+                <!-- Anzeigen der letzten Messwerte -->
+                <ng-container *ngFor="let measurement of getLatestMeasurements(sensor.measurements)">
+                    <Label *ngIf="measurement" [text]="'Letzte Temperatur: ' + measurement.temperature + '°C'" class="label"></Label>
+                    <Label *ngIf="measurement" [text]="'Letzte Luftfeuchtigkeit: ' + measurement.humidity + '%'" class="label"></Label>
+                </ng-container>
             </StackLayout>
         </ng-container>
-    </StackLayout>
+    </FlexboxLayout>
 </ScrollView>
 <!------------------------------------------------------->
