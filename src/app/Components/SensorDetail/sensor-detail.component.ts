@@ -32,8 +32,9 @@ export class SensorDetailComponent implements OnInit {
     }
 
     private loadLastTenMeasurements(sensorId: number) {
-        this.backendService.getMeasurementsFromSensor(sensorId, 'lastTen').subscribe(measurements => {
-            this.lastTenMeasurements = measurements;
+        this.backendService.getMeasurementsFromSensor(sensorId).subscribe(measurements => {
+            measurements.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+            this.lastTenMeasurements = measurements.slice(0, 10);
         });
     }
 }
