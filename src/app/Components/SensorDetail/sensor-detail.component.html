@@ -4,13 +4,21 @@
     <Label text="Sensor Details" class="h1"></Label>
     <Label [text]="'Name: ' + sensor.name"></Label>
     <Label [text]="'Location: ' + sensor.location"></Label>
-    <!-- Weitere Sensor-Details hier anzeigen -->
+    <Label [text]="'Type: ' + sensor.type"></Label>
+    <Label [text]="'Active: ' + (sensor.active ? 'Yes' : 'No')"></Label>
 
     <Label text="Letzte 10 Messwerte" class="h2"></Label>
     <StackLayout *ngFor="let measurement of lastTenMeasurements">
         <Label [text]="measurement.timestamp | date: 'medium'"></Label>
         <Label [text]="'Temperatur: ' + measurement.temperature + '°C'"></Label>
         <Label [text]="'Luftfeuchtigkeit: ' + measurement.humidity + '%'"></Label>
+    </StackLayout>
+    <Label text="Temperaturdiagramm" class="h2"></Label>
+    <StackLayout #chartContainer class="chart-container"></StackLayout>
+    <StackLayout class="time-period-selector">
+        <Button text="Letzte 24 Stunden" (tap)="changeTimePeriod('24Hours')"></Button>
+        <Button text="Letzte 7 Tage" (tap)="changeTimePeriod('7Days')"></Button>
+        <Button text="Letzte 30 Tage" (tap)="changeTimePeriod('30Days')"></Button>
     </StackLayout>
 </StackLayout>
 <!------------------------------------------------------->

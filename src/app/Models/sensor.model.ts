@@ -1,6 +1,5 @@
 //sensor.model.ts Inhalt:
 
-
 import { Measurement} from "~/app/Models/measurement.model";
 
 export interface Sensor {

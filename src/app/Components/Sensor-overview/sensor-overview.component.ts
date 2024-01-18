@@ -14,7 +14,7 @@ export class SensorOverviewComponent implements OnInit {
     showSensorList = false;
     isLoading = true;
 
-    constructor(private backendService: BackendService, private router: Router) {} // Router injizieren
+    constructor(private backendService: BackendService, private router: Router) {}
 
     ngOnInit(): void {
         this.backendService.getSensors(0, 10).subscribe(
@@ -29,9 +29,10 @@ export class SensorOverviewComponent implements OnInit {
         );
     }
 
-    onSensorTouch() {
-        this.showSensorList = true;
+    showChart(sensorId: number) {
+        this.router.navigate(['/sensor-detail', sensorId]);
     }
+
     navigateToSensorDetails(sensorId: number) {
         this.router.navigate(['/sensor-detail', sensorId]);
     }

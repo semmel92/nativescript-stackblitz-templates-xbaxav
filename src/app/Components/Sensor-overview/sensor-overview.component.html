@@ -3,11 +3,16 @@
 <ActionBar title="Sensorübersicht"></ActionBar>
 <ListView [items]="sensors" class="list-group">
     <ng-template let-sensor="item">
-        <StackLayout class="list-group-item" (tap)="navigateToSensorDetails(sensor.sensorId)">
-            <Label [text]="sensor.name" class="list-group-item-title"></Label>
-            <Label [text]="'Standort: ' + sensor.location" class="list-group-item-subtitle"></Label>
-            <Label [text]="'Typ: ' + sensor.type" class="list-group-item-subtitle"></Label>
-            <Label [text]="'Aktiv: ' + (sensor.active ? 'Ja' : 'Nein')" class="list-group-item-subtitle"></Label>
+        <StackLayout class="list-group-item">
+            <GridLayout columns="*, auto" class="list-group-item-content">
+                <StackLayout class="list-group-item-info" col="0" (tap)="navigateToSensorDetails(sensor.sensorId)">
+                    <Label [text]="sensor.name" class="list-group-item-title"></Label>
+                    <Label [text]="'Standort: ' + sensor.location" class="list-group-item-subtitle"></Label>
+                    <Label [text]="'Typ: ' + sensor.type" class="list-group-item-subtitle"></Label>
+                    <Label [text]="'Aktiv: ' + (sensor.active ? 'Ja' : 'Nein')" class="list-group-item-subtitle"></Label>
+                </StackLayout>
+                <Button text="Zeige Diagramm" col="1" class="btn-show-chart" (tap)="showChart(sensor.sensorId)"></Button>
+            </GridLayout>
         </StackLayout>
     </ng-template>
 </ListView>
